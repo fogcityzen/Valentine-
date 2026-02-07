@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
    🔊 BACKGROUND MUSIC
 ===================== */
 const bgMusic = document.getElementById("bgMusic");
-bgMusic.play().catch(() => {}); // force autoplay (muted)
+bgMusic.play().catch(() => {}); // autoplay muted
 
 function enableMusic() {
     bgMusic.muted = false;
@@ -71,11 +71,7 @@ button.addEventListener("click", () => {
         button.textContent = "loading...";
         fetch("send_mail.php")
             .then(response => {
-                if (response.ok) {
-                    button.textContent = "Check Your Email <3";
-                } else {
-                    button.textContent = "Error 😞";
-                }
+                button.textContent = response.ok ? "Check Your Email <3" : "Error 😞";
             })
             .catch(() => {
                 button.textContent = "Error 😞";
@@ -102,12 +98,11 @@ function drawText() {
     if (frameNumber < 250) {
         context.fillStyle = `rgba(45,45,255,${opacity})`;
         context.fillText("everyday day I cannot believe how lucky I am", canvas.width / 2, canvas.height / 2);
-        opacity += 0.01;
+        opacity += 0.003;
     }
 
     if (frameNumber >= 250 && frameNumber < 500) {
-        context.fillText("everyday day I cannot believe how lucky I am", canvas.width / 2, canvas.height / 2);
-        opacity -= 0.01;
+        opacity -= 0.003;
     }
 
     if (frameNumber === 500) opacity = 0;
@@ -123,39 +118,67 @@ function drawText() {
                 lineHeight
             );
         } else {
-            context.fillText("amongst trillions and trillions of stars, over billions of years", canvas.width / 2, canvas.height / 2);
+            context.fillText(
+                "amongst trillions and trillions of stars, over billions of years",
+                canvas.width / 2,
+                canvas.height / 2
+            );
         }
-        opacity += 0.01;
+        opacity += 0.003;
     }
 
-    if (frameNumber >= 750 && frameNumber < 1000) opacity -= 0.01;
+    if (frameNumber >= 750 && frameNumber < 1000) {
+        opacity -= 0.003;
+    }
+
     if (frameNumber === 1000) opacity = 0;
 
     if (frameNumber > 1000 && frameNumber < 1250) {
         context.fillStyle = `rgba(45,45,255,${opacity})`;
-        context.fillText("to be alive, and to get to spend this life with you", canvas.width / 2, canvas.height / 2);
-        opacity += 0.01;
+        context.fillText(
+            "to be alive, and to get to spend this life with you",
+            canvas.width / 2,
+            canvas.height / 2
+        );
+        opacity += 0.003;
     }
 
-    if (frameNumber >= 1250 && frameNumber < 1500) opacity -= 0.01;
+    if (frameNumber >= 1250 && frameNumber < 1500) {
+        opacity -= 0.003;
+    }
+
     if (frameNumber === 1500) opacity = 0;
 
     if (frameNumber > 1500 && frameNumber < 1750) {
         context.fillStyle = `rgba(45,45,255,${opacity})`;
-        context.fillText("is so incredibly, unfathomably unlikely", canvas.width / 2, canvas.height / 2);
-        opacity += 0.01;
+        context.fillText(
+            "is so incredibly, unfathomably unlikely",
+            canvas.width / 2,
+            canvas.height / 2
+        );
+        opacity += 0.003;
     }
 
-    if (frameNumber >= 1750 && frameNumber < 2000) opacity -= 0.01;
+    if (frameNumber >= 1750 && frameNumber < 2000) {
+        opacity -= 0.003;
+    }
+
     if (frameNumber === 2000) opacity = 0;
 
     if (frameNumber > 2000 && frameNumber < 2250) {
         context.fillStyle = `rgba(45,45,255,${opacity})`;
-        context.fillText("and yet here I am to get the impossible chance to get to know you", canvas.width / 2, canvas.height / 2);
-        opacity += 0.01;
+        context.fillText(
+            "and yet here I am to get the impossible chance to get to know you",
+            canvas.width / 2,
+            canvas.height / 2
+        );
+        opacity += 0.003;
     }
 
-    if (frameNumber >= 2250 && frameNumber < 2500) opacity -= 0.01;
+    if (frameNumber >= 2250 && frameNumber < 2500) {
+        opacity -= 0.003;
+    }
+
     if (frameNumber === 2500) opacity = 0;
 
     if (frameNumber > 2500) {
@@ -165,7 +188,7 @@ function drawText() {
             canvas.width / 2,
             canvas.height / 2
         );
-        opacity += 0.01;
+        opacity += 0.003;
     }
 
     if (frameNumber >= 2750) {
@@ -175,17 +198,19 @@ function drawText() {
             canvas.width / 2,
             canvas.height / 2 + 50
         );
-        secondOpacity += 0.01;
+        secondOpacity += 0.003;
     }
 
     if (frameNumber >= 3000) {
         context.fillStyle = `rgba(45,45,255,${thirdOpacity})`;
-        context.fillText("Will you be my Valentine <3 ?", canvas.width / 2, canvas.height / 2 + 120);
-        thirdOpacity += 0.01;
+        context.fillText(
+            "Will you be my Valentine <3 ?",
+            canvas.width / 2,
+            canvas.height / 2 + 120
+        );
+        thirdOpacity += 0.003;
 
         button.style.display = "block";
-
-        // 🔊 MUSIC UNMUTES HERE
         enableMusic();
     }
 
