@@ -224,6 +224,28 @@ function drawText() {
      context.shadowOffsetX = 0;
      context.shadowOffsetY = 0;
 }
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+let musicStarted = false;
+
+// Start music on first user interaction (browser requirement)
+document.addEventListener("click", () => {
+  if (!musicStarted) {
+    bgMusic.muted = false;
+    bgMusic.volume = 0.4; // soft romantic volume
+    bgMusic.play().catch(() => {});
+    musicStarted = true;
+    musicToggle.textContent = "🔊";
+  }
+}, { once: true });
+
+// Toggle mute / unmute
+musicToggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevents restarting logic
+  bgMusic.muted = !bgMusic.muted;
+  musicToggle.textContent = bgMusic.muted ? "🔇" : "🔊";
+}):
 
 function draw() {
     context.putImageData(baseFrame, 0, 0);
